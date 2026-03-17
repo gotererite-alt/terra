@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bspeeibc4l7dq"]
+
+[ext_resource type="PackedScene" uid="uid://cxwdwqux4shh3" path="res://Scenes/player.tscn" id="1_j2wod"]
+[ext_resource type="Script" uid="uid://7ikasnvp23qw" path="res://Scenes/node_2d.gd" id="1_u7krg"]
+[ext_resource type="PackedScene" uid="uid://wfh2xrjru0am" path="res://Scenes/ui.tscn" id="2_v1qfn"]
+[ext_resource type="PackedScene" uid="uid://c0ylvlft203ri" path="res://Scenes/enemy.tscn" id="3_6whob"]
+[ext_resource type="PackedScene" uid="uid://tpxou6qci4br" path="res://Scenes/enemy_controler.tscn" id="4_tx0tn"]
+
+[node name="Node2D" type="Node2D" unique_id=2070529383]
+script = ExtResource("1_u7krg")
+
+[node name="Player" parent="." unique_id=1805932982 instance=ExtResource("1_j2wod")]
+
+[node name="UI" parent="." unique_id=682227685 instance=ExtResource("2_v1qfn")]
+
+[node name="EnemyControler" parent="." unique_id=1341683275 instance=ExtResource("4_tx0tn")]
+
+[node name="enemy" parent="EnemyControler" unique_id=614671796 node_paths=PackedStringArray("player") instance=ExtResource("3_6whob")]
+position = Vector2(0, -128)
+player = NodePath("../../Player")

@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://c0ylvlft203ri"]
+
+[ext_resource type="Script" uid="uid://8ell7fovg83k" path="res://Script/enemy.gd" id="1_1f0kj"]
+[ext_resource type="Texture2D" uid="uid://coo0gbrgst8eb" path="res://Sprite/tailor.png" id="1_hghv2"]
+[ext_resource type="PackedScene" uid="uid://dggjxoaa7enbs" path="res://Scenes/swin.tscn" id="2_0830c"]
+[ext_resource type="Script" uid="uid://bhf0kju201mt" path="res://Script/ai.gd" id="3_afpow"]
+[ext_resource type="Script" uid="uid://clprqswv4q7fl" path="res://Script/raycasting.gd" id="4_287tu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1f0kj"]
+size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_afpow"]
+atlas = ExtResource("1_hghv2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_287tu"]
+atlas = ExtResource("1_hghv2")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0830c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_afpow")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_287tu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="enemy" type="CharacterBody2D" unique_id=614671796 groups=["enemies", "obstacle"]]
+collision_mask = 0
+script = ExtResource("1_1f0kj")
+swin = ExtResource("2_0830c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2025571682]
+shape = SubResource("RectangleShape2D_1f0kj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1608861533]
+rotation = 3.1415927
+sprite_frames = SubResource("SpriteFrames_0830c")
+frame_progress = 0.9989969
+
+[node name="Ai" type="Node2D" parent="." unique_id=1713266113 node_paths=PackedStringArray("actor")]
+script = ExtResource("3_afpow")
+actor = NodePath("..")
+
+[node name="raycasting" type="Node2D" parent="." unique_id=307640276]
+script = ExtResource("4_287tu")
+
+[node name="Right" type="RayCast2D" parent="raycasting" unique_id=486106090]
+target_position = Vector2(32, 0)
+
+[node name="Down" type="RayCast2D" parent="raycasting" unique_id=1315035784]
+target_position = Vector2(0, 32)
+
+[node name="Up" type="RayCast2D" parent="raycasting" unique_id=1943706693]
+target_position = Vector2(0, -32)
+
+[node name="Left" type="RayCast2D" parent="raycasting" unique_id=188895047]
+target_position = Vector2(-32, 0)
+
+[node name="spwnpoint" type="Marker2D" parent="." unique_id=1912141786]
+
+[connection signal="ping" from="raycasting" to="Ai" method="_on_raycasting_ping"]
