@@ -21,10 +21,10 @@ TurnManager="*uid://b7o0ss3vlrube"
 
 [display]
 
-window/size/viewport_width=579
-window/size/viewport_height=324
+window/size/viewport_width=1158
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
+window/stretch/scale=1.5
 
 [global_group]
 

@@ -65,4 +65,5 @@ target_position = Vector2(-32, 0)
 
 [node name="spwnpoint" type="Marker2D" parent="." unique_id=1912141786]
 
+[connection signal="ping" from="." to="Ai" method="_on_enemy_ping"]
 [connection signal="ping" from="raycasting" to="Ai" method="_on_raycasting_ping"]

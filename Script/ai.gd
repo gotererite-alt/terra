@@ -9,17 +9,9 @@ var colliding = {}
 var prepped = false
 
 func _ready() -> void:
-	done.connect(TurnManager.counter)
+	done.connect(TurnManager.enemy_done)
 	atk.connect(actor.attack)
 	randomize()
-
-func _physics_process(delta: float) -> void:
-	if TurnManager.myturn == false:
-		if buffer >= 0.5:
-			action()
-			buffer = 0
-		else :
-			buffer += delta
 
 func _on_raycasting_ping(list) -> void:
 	for i in list:
@@ -66,3 +58,6 @@ func attack():
 			res = b
 	atk.emit(res)
 	done.emit()
+
+func _on_enemy_ping() -> void:
+	action()

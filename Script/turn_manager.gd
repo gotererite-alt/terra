@@ -1,13 +1,15 @@
 extends Node
 
 var myturn = true
-var counting = 0
+var curr_controller
+var turns = 0
 
 
-func test(num):
-	if counting >= num:
-		myturn = true
-		counting = 0
+func test(ctrl):
+	curr_controller = ctrl
 
-func counter():
-	counting += 1
+func enemy_done():
+	if myturn == false:
+		turns += 1
+		curr_controller.continues()
+		
