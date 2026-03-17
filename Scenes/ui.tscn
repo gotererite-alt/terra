@@ -1,5 +1,45 @@
 [gd_scene format=3 uid="uid://wfh2xrjru0am"]
 
-[node name="UI" type="CanvasLayer" unique_id=682227685]
+[ext_resource type="Script" uid="uid://cssopc2ugkjeg" path="res://Scenes/pause.gd" id="1_jxero"]
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=2102605916]
+[node name="UI" type="CanvasLayer" unique_id=682227685]
+process_mode = 3
+script = ExtResource("1_jxero")
+
+[node name="Panel" type="Panel" parent="." unique_id=1924244674]
+process_mode = 2
+offset_right = 772.0
+offset_bottom = 432.0
+
+[node name="Resume" type="Button" parent="." unique_id=1931201373]
+process_mode = 2
+offset_left = 261.333
+offset_top = 274.667
+offset_right = 510.66602
+offset_bottom = 305.667
+text = "Resume Game"
+
+[node name="Quit" type="Button" parent="." unique_id=223979010]
+process_mode = 2
+offset_left = 261.333
+offset_top = 331.333
+offset_right = 510.66602
+offset_bottom = 362.333
+text = "Quit Game"
+
+[node name="Preview" type="Panel" parent="." unique_id=75574028]
+process_mode = 2
+offset_left = 132.0
+offset_top = 40.667
+offset_right = 642.667
+offset_bottom = 243.33398
+
+[node name="Label" type="Label" parent="Preview" unique_id=1406526061]
+layout_mode = 0
+offset_left = 188.00002
+offset_top = 94.33301
+offset_right = 320.0
+offset_bottom = 117.33301
+text = "skill tree preveiw"
+
+[connection signal="pressed" from="Resume" to="." method="_on_resume_pressed"]
