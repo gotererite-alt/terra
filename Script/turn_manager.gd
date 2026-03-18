@@ -1,5 +1,6 @@
 extends Node
 
+var character
 var myturn = true
 var curr_controller
 var turns = 0

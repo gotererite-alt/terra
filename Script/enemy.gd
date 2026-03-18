@@ -10,7 +10,7 @@ signal ping
 func _physics_process(delta: float) -> void:
 	player_pos = player.position
 	if wait == true:
-		if timer >= 0.5:
+		if timer >= 0.2:
 			wait = false
 			timer = 0
 			ping.emit()

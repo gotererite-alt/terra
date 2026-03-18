@@ -14,8 +14,7 @@ func _ready() -> void:
 	randomize()
 
 func _on_raycasting_ping(list) -> void:
-	for i in list:
-		colliding[i] = list[i]
+	colliding = list
 
 func action():
 	if colliding.values().has([&"players"]):
@@ -27,6 +26,7 @@ func action():
 func movement():
 	var directions = []
 	var result = []
+	var failsafe = []
 	
 	var go_to = actor.player_pos
 	var dir = go_to - actor.position
@@ -34,8 +34,9 @@ func movement():
 	var y_dir = sign(dir.y)
 	
 	for b in colliding:
-		if colliding[b] == [&"obstacle"]:
+		if colliding[b] != null and &"obstacle" in colliding[b]:
 			result.append(b)
+			failsafe.append(b)
 	
 	if x_dir != 0:
 		directions.append(Vector2(x_dir,0))
@@ -46,6 +47,19 @@ func movement():
 		if i in result:
 			directions.erase(i)
 	
+	if directions.size() == 0:
+		if y_dir == 0:
+			directions.append(Vector2(0,1))
+			directions.append(Vector2(0,-1))
+		elif x_dir == 0:
+			directions.append(Vector2(1,0))
+			directions.append(Vector2(-1,0))
+		else :
+			directions.append(Vector2(-x_dir,0))
+			directions.append(Vector2(0,-y_dir))
+			for i in directions.duplicate():
+				if i in result:
+					directions.erase(i)
 	if directions.size() > 0:
 		var move = directions.pick_random()
 		actor.position += move * 32
