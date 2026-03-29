@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://h6akjdjtodcc"]
+
+[ext_resource type="Script" uid="uid://b8xeoknl8eowu" path="res://Script/fighter.gd" id="1_3dnt7"]
+[ext_resource type="PackedScene" uid="uid://dmaegaoy730yf" path="res://Scenes/swing.tscn" id="2_lx80f"]
+
+[node name="Fighter" type="Node2D" unique_id=564302062]
+script = ExtResource("1_3dnt7")
+swing = ExtResource("2_lx80f")
+
+[node name="Spawnpoint" type="Marker2D" parent="." unique_id=1215984448]

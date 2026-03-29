@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var swin : PackedScene
 @export var player :CharacterBody2D
+@export var hp = 3
 var player_pos
 var wait = false
 var timer = 0
@@ -28,3 +29,8 @@ func attack(pos):
 
 func turn():
 	wait = true
+
+func take_damage(damage):
+	hp -= damage
+	if hp <= 0:
+		queue_free()

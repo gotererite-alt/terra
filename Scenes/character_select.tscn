@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://dgs1811ums5dg"]
+
+[ext_resource type="Script" uid="uid://dbvpqt3lxh110" path="res://Script/character_select.gd" id="1_o8raw"]
+[ext_resource type="Texture2D" uid="uid://b8acmhydm7mq3" path="res://icon.svg" id="2_wqg5r"]
+
+[node name="character select" type="Control" unique_id=1516283743]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_o8raw")
+
+[node name="Panel" type="Panel" parent="." unique_id=1764541372]
+layout_mode = 0
+offset_right = 772.0
+offset_bottom = 432.0
+
+[node name="Label" type="Label" parent="." unique_id=442240743]
+layout_mode = 0
+offset_left = 286.0
+offset_top = 78.0
+offset_right = 461.0
+offset_bottom = 101.0
+text = "Choose your character"
+
+[node name="Fighter" type="TextureButton" parent="." unique_id=1207072833]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 158.0
+offset_right = 228.0
+offset_bottom = 286.0
+texture_normal = ExtResource("2_wqg5r")
+
+[node name="Label" type="Label" parent="Fighter" unique_id=1828857428]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 128.0
+offset_right = 89.0
+offset_bottom = 151.0
+text = "Fighter"
+
+[node name="Ranger" type="TextureButton" parent="." unique_id=1356694318]
+layout_mode = 0
+offset_left = 550.0
+offset_top = 161.0
+offset_right = 678.0
+offset_bottom = 289.0
+texture_normal = ExtResource("2_wqg5r")
+
+[node name="Label" type="Label" parent="Ranger" unique_id=1404873310]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 127.0
+offset_right = 92.0
+offset_bottom = 150.0
+text = "Ranger"
+
+[node name="Mage" type="TextureButton" parent="." unique_id=1075341792]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 156.0
+offset_right = 440.0
+offset_bottom = 284.0
+texture_normal = ExtResource("2_wqg5r")
+
+[node name="Label" type="Label" parent="Mage" unique_id=1774556990]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 127.0
+offset_right = 85.0
+offset_bottom = 150.0
+text = "Mage"
+
+[connection signal="pressed" from="Fighter" to="." method="_on_fighter_pressed"]
+[connection signal="pressed" from="Ranger" to="." method="_on_ranger_pressed"]
+[connection signal="pressed" from="Mage" to="." method="_on_mage_pressed"]

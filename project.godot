@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Terra"
-run/main_scene="res://Scenes/node_2d.tscn"
+run/main_scene="uid://dgs1811ums5dg"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
